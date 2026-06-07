@@ -18,8 +18,8 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "www.pasta-sanitaria-alimentos.consultorasanitaria.com.br" }],
-      "destination": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/",
+      "has": [{ "type": "host", "value": "www.pasta-personalizada-alimentos.consultorasanitaria.com.br" }],
+      "destination": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/",
       "permanent": true
     }
   ]

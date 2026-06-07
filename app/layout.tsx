@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pasta Sanitária Personalizada | Ana Roberta | Consultora Nutricionista',
     description: 'Documentação sanitária sob medida para restaurantes, padarias, deliveries e cozinhas. Elaborada por nutricionista consultora. Checkout seguro pela Hotmart.',
-    url: 'https://pasta-sanitaria-alimentos.consultorasanitaria.com.br',
+    url: 'https://pasta-personalizada-alimentos.consultorasanitaria.com.br',
     siteName: 'Ana Roberta | Consultora Nutricionista | TreinaVISA',
     locale: 'pt_BR',
     type: 'website',
   },
   robots: { index: true, follow: true },
   alternates: {
-    canonical: 'https://pasta-sanitaria-alimentos.consultorasanitaria.com.br',
+    canonical: 'https://pasta-personalizada-alimentos.consultorasanitaria.com.br',
   },
 };
 

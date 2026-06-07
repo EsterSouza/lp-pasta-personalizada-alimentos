@@ -24,9 +24,9 @@ export default async function Home() {
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#product",
+    "@id": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/#product",
     "name": "Pasta Sanitária Personalizada",
-    "image": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/logo.webp",
+    "image": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/logo.webp",
     "description": "Manual de Boas Práticas, POPs e planilhas operacionais 100% personalizados por nutricionista consultora especializada para evitar multas da Vigilância Sanitária.",
     "brand": {
       "@type": "Brand",
@@ -44,21 +44,21 @@ export default async function Home() {
           "name": "Pasta Digital",
           "price": "497.00",
           "priceCurrency": "BRL",
-          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+          "url": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/#planos"
         },
         {
           "@type": "Offer",
           "name": "Física P&B + Digital",
           "price": "697.00",
           "priceCurrency": "BRL",
-          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+          "url": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/#planos"
         },
         {
           "@type": "Offer",
           "name": "Física Colorida + Digital",
           "price": "857.00",
           "priceCurrency": "BRL",
-          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+          "url": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/#planos"
         }
       ]
     }
@@ -67,10 +67,10 @@ export default async function Home() {
   const businessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#business",
+    "@id": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/#business",
     "name": "Ana Roberta | Consultora Nutricionista",
-    "image": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/logo.webp",
-    "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br",
+    "image": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/logo.webp",
+    "url": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br",
     "telephone": "+5521990313823",
     "address": {
       "@type": "PostalAddress",
