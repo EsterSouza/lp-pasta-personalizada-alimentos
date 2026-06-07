@@ -6,6 +6,8 @@ dist/
 build/
 .vscode/
 .idea/
+.next/
+.vercel/
 *.png
 *.webp
 *.jpeg

@@ -1,0 +1,58 @@
+@import "tailwindcss";
+/* aria-label placeholder */
+
+@theme {
+  --color-bg: #FAFAF8;
+  --color-bg-alt: #F2F0EB;
+  --color-bg-dark: #1E2B24;
+  --color-green-deep: #2D4A3E;
+  --color-green-mid: #3D6B57;
+  --color-green-cta: #1A7A4A;
+  --color-green-cta-hover: #155E38;
+  --color-green-light: #EAF2ED;
+  --color-gold: #C4893A;
+  --color-gold-light: #F5ECD9;
+  --color-text-primary: #1C1C1C;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #8A8A8A;
+  --color-border: #E2DDD6;
+
+  --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-sans: var(--font-dmsans), system-ui, sans-serif;
+  --font-serif: var(--font-heading), system-ui, sans-serif;
+}
+
+/* Base custom styles */
+body {
+  background-color: #FAFAF8;
+  color: #1C1C1C;
+  font-family: var(--font-dmsans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom shadow utility for premium look */
+.shadow-premium {
+  box-shadow: 0 20px 60px rgba(45, 74, 62, 0.15);
+}
+
+.shadow-card {
+  box-shadow: 0 10px 30px rgba(45, 74, 62, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}

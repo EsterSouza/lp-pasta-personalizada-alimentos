@@ -1,8 +1,26 @@
 {
-  "rewrites": [
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
     {
       "source": "/",
-      "destination": "/api/ab"
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.pasta-sanitaria-alimentos.consultorasanitaria.com.br" }],
+      "destination": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/",
+      "permanent": true
     }
   ]
 }
