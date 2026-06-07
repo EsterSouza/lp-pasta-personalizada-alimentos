@@ -20,8 +20,78 @@ export default async function Home() {
   // Obter a versão A/B do header (primeiro acesso) ou do cookie (acessos subsequentes)
   const abVersion = headersList.get("x-ab-test-version") || cookiesList.get("ab-test-version")?.value || "A";
 
+  // Schema Markup JSON-LD para indexador do Google e motores de busca IA (GEO)
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#product",
+    "name": "Pasta Sanitária Personalizada",
+    "image": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/logo.webp",
+    "description": "Manual de Boas Práticas, POPs e planilhas operacionais 100% personalizados por nutricionista consultora especializada para evitar multas da Vigilância Sanitária.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Ana Roberta | Consultora Nutricionista"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "BRL",
+      "lowPrice": "497.00",
+      "highPrice": "857.00",
+      "offerCount": "3",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pasta Digital",
+          "price": "497.00",
+          "priceCurrency": "BRL",
+          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+        },
+        {
+          "@type": "Offer",
+          "name": "Física P&B + Digital",
+          "price": "697.00",
+          "priceCurrency": "BRL",
+          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+        },
+        {
+          "@type": "Offer",
+          "name": "Física Colorida + Digital",
+          "price": "857.00",
+          "priceCurrency": "BRL",
+          "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#planos"
+        }
+      ]
+    }
+  };
+
+  const businessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/#business",
+    "name": "Ana Roberta | Consultora Nutricionista",
+    "image": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br/logo.webp",
+    "url": "https://pasta-sanitaria-alimentos.consultorasanitaria.com.br",
+    "telephone": "+5521990313823",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rio de Janeiro",
+      "addressRegion": "RJ",
+      "addressCountry": "BR"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "HUB TreinaVISA"
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([productJsonLd, businessJsonLd]),
+        }}
+      />
       <Navbar />
       <main>
         <Hero abVersion={abVersion} />
