@@ -18,6 +18,10 @@ export default function FAQ() {
       answer: "Sim. Todos os documentos são elaborados com base nas normas federais — incluindo a RDC ANVISA 216/2004 e demais legislações aplicáveis — e adaptados às exigências estaduais e municipais do seu estabelecimento.",
     },
     {
+      question: "O serviço vale para todo o Brasil?",
+      answer: "Sim. Atendemos estabelecimentos em todos os estados e municípios do Brasil. Nossa equipe faz o levantamento das normas da Vigilância Sanitária local (estadual e municipal) para garantir que sua pasta atenda perfeitamente aos requisitos específicos da sua região.",
+    },
+    {
       question: "Posso editar os documentos depois de recebê-los?",
       answer: "Sim. Você recebe os arquivos em Word, editáveis, além da versão finalizada em PDF.",
     },
@@ -31,7 +35,7 @@ export default function FAQ() {
     },
     {
       question: "Como recebo a documentação?",
-      answer: "Via Google Drive ou OneDrive, conforme sua preferência. Se contratou a pasta física, ela é enviada por correio com frete grátis.",
+      answer: "Via Google Drive ou OneDrive, conforme sua preferência. Se contratou a pasta física, ela é enviada por transportadora (escolhida pelo melhor tempo de entrega) com frete grátis.",
     },
     {
       question: "Como funciona o pagamento?",
