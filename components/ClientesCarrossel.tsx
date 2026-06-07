@@ -17,9 +17,6 @@ export default function ClientesCarrossel() {
     { src: "/logo-santaguloseima.webp", alt: "Santa Guloseima" },
   ];
 
-  // Duplicar para criar um loop contínuo perfeito
-  const doubledLogos = [...logos, ...logos];
-
   return (
     <div className="bg-bg-alt border-y border-border py-8 overflow-hidden relative w-full">
       <div className="max-w-7xl mx-auto px-6 mb-4 text-center">
@@ -30,18 +27,38 @@ export default function ClientesCarrossel() {
 
       {/* Marquee Wrapper com gradiente de desbotamento nas laterais */}
       <div className="flex w-full overflow-hidden relative mask-gradient">
-        <div className="flex gap-8 md:gap-16 items-center animate-marquee whitespace-nowrap min-w-full">
-          {doubledLogos.map((logo, idx) => (
+        {/* Lista Principal */}
+        <div className="flex items-center gap-6 md:gap-8 pr-6 md:pr-8 animate-marquee whitespace-nowrap flex-shrink-0">
+          {logos.map((logo, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center justify-center h-12 w-28 md:w-32 flex-shrink-0 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 relative"
+              className="inline-flex items-center justify-center h-12 w-24 md:w-28 flex-shrink-0 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 relative"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 title={logo.alt}
                 fill
-                sizes="(max-width: 768px) 120px, 150px"
+                sizes="120px"
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Lista Duplicada para Loop Infinito Perfeito */}
+        <div className="flex items-center gap-6 md:gap-8 pr-6 md:pr-8 animate-marquee whitespace-nowrap flex-shrink-0" aria-hidden="true">
+          {logos.map((logo, idx) => (
+            <div
+              key={idx + 100}
+              className="inline-flex items-center justify-center h-12 w-24 md:w-28 flex-shrink-0 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 relative"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                title={logo.alt}
+                fill
+                sizes="120px"
                 className="object-contain"
               />
             </div>
@@ -71,17 +88,16 @@ export default function ClientesCarrossel() {
               transform: translateX(0);
             }
             100% {
-              transform: translateX(-50%);
+              transform: translateX(-100%);
             }
           }
           .animate-marquee {
             display: flex;
-            width: max-content;
-            animation: marquee 15s linear infinite;
+            animation: marquee 20s linear infinite;
           }
           @media (min-width: 768px) {
             .animate-marquee {
-              animation: marquee 25s linear infinite;
+              animation: marquee 30s linear infinite;
             }
           }
         `}} />
