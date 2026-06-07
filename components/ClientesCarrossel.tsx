@@ -30,7 +30,7 @@ export default function ClientesCarrossel() {
 
       {/* Marquee Wrapper com gradiente de desbotamento nas laterais */}
       <div className="flex w-full overflow-hidden relative mask-gradient">
-        <div className="flex gap-16 items-center animate-marquee whitespace-nowrap min-w-full">
+        <div className="flex gap-8 md:gap-16 items-center animate-marquee whitespace-nowrap min-w-full">
           {doubledLogos.map((logo, idx) => (
             <div
               key={idx}
@@ -77,7 +77,12 @@ export default function ClientesCarrossel() {
           .animate-marquee {
             display: flex;
             width: max-content;
-            animation: marquee 30s linear infinite;
+            animation: marquee 15s linear infinite;
+          }
+          @media (min-width: 768px) {
+            .animate-marquee {
+              animation: marquee 25s linear infinite;
+            }
           }
         `}} />
       </div>
