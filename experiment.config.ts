@@ -6,4 +6,4 @@ export const experiment = {
     { id: "b", weight: 50 },
   ],
   champion: null as string | null,
-} as const;
+};
