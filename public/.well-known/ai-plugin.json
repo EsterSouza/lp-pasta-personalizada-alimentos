@@ -1,0 +1,11 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Consultora Sanitaria",
+  "name_for_model": "consultora_sanitaria_alimentos",
+  "description_for_human": "Pasta Sanitaria Personalizada para servicos de alimentacao: Manual de Boas Praticas, POPs e planilhas elaborados sob medida por nutricionista consultora. Entrega digital e/ou fisica com frete gratis.",
+  "description_for_model": "Landing page for Consultora Sanitaria selling personalized sanitary documentation kits for food service businesses in Brazil. Includes Manual de Boas Praticas, POPs, and operational spreadsheets customized by a nutritionist consultant. Three tiers: Digital (R$497), Physical B&W + Digital (R$697), Physical Color + Digital (R$857). Delivery within 15 business days. Target: restaurants, bakeries, deliveries, buffets, grocery stores, hospital kitchens — any food service subject to Vigilancia Sanitaria inspections.",
+  "auth": { "type": "none" },
+  "logo_url": "https://pasta-personalizada-alimentos.consultorasanitaria.com.br/logo.webp",
+  "contact_email": "contato@consultorasanitaria.com.br",
+  "legal_info_url": "https://consultorasanitaria.com.br"
+}

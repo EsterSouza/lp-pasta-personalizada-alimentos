@@ -1,8 +1,4 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { experiment } from "./experiment.config";
-
-const MARKDOWN_CONTENT = `# Pasta Sanitaria Personalizada para Servicos de Alimentacao
+# Pasta Sanitaria Personalizada para Servicos de Alimentacao
 
 > Documentacao operacional sob medida para regularizar seu servico de alimentacao junto a Vigilancia Sanitaria.
 
@@ -33,6 +29,7 @@ Pasta Sanitaria Personalizada — Manual de Boas Praticas, POPs (Procedimentos O
 - Buffets
 - Mercearias
 - Hospitais e cozinhas industriais
+- Qualquer servico de alimentacao sujeito a fiscalizacao da Vigilancia Sanitaria
 
 ## Garantia
 
@@ -52,56 +49,3 @@ Garantia incondicional de 7 dias. Reembolso integral sem burocracia.
 Consultora Sanitaria · CNPJ 53.297.694/0001-37
 Ed. Lagoa, Av. Embaixador Abelardo Bueno, 1, Sala 153-D
 Barra Olimpica, Rio de Janeiro - RJ, 22775-022
-`;
-
-function pickVariant(): string {
-  if (experiment.champion) return experiment.champion;
-
-  const total = experiment.variants.reduce((sum, v) => sum + v.weight, 0);
-  let rand = Math.random() * total;
-
-  for (const v of experiment.variants) {
-    rand -= v.weight;
-    if (rand <= 0) return v.id;
-  }
-
-  return experiment.variants[0].id;
-}
-
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (pathname !== "/") return NextResponse.next();
-
-  const accept = request.headers.get("accept") || "";
-  if (accept.includes("text/markdown")) {
-    return new NextResponse(MARKDOWN_CONTENT, {
-      headers: { "Content-Type": "text/markdown; charset=utf-8" },
-    });
-  }
-
-  const validIds = experiment.variants.map((v) => v.id);
-  let variant = request.cookies.get(experiment.cookie)?.value;
-
-  if (!variant || !validIds.includes(variant)) {
-    variant = pickVariant();
-  }
-
-  const rewriteUrl = request.nextUrl.clone();
-  rewriteUrl.pathname = `/${variant}`;
-
-  const response = NextResponse.rewrite(rewriteUrl);
-
-  if (request.cookies.get(experiment.cookie)?.value !== variant) {
-    response.cookies.set(experiment.cookie, variant, {
-      maxAge: experiment.maxAge,
-      path: "/",
-    });
-  }
-
-  return response;
-}
-
-export const config = {
-  matcher: ["/"],
-};
