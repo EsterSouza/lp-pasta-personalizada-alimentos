@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   other: {
     "llms:description": "Landing page da Pasta Sanitária Personalizada para serviços de alimentação (restaurantes, padarias, deliveries, buffets). Documentação operacional sob medida — Manual de Boas Práticas, POPs e planilhas — elaborada por nutricionista consultora. Entrega digital (Word + PDF) ou física impressa com frete grátis. Marca: Ana Roberta / Consultora Sanitária.",
   },
-  robots: { index: true, follow: true },
   alternates: {
     canonical: 'https://pasta-personalizada-alimentos.consultorasanitaria.com.br',
   },
