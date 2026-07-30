@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { trackInitiateCheckout } from "./pixel";
+import { trackInitiateCheckout } from "@/lib/tracking";
 
 export default function CTAFinal() {
   const shouldReduceMotion = useReducedMotion();

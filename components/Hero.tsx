@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { trackInitiateCheckout } from "./pixel";
+import { trackInitiateCheckout } from "@/lib/tracking";
 
-export default function Hero({ abVersion = "A" }: { abVersion?: string }) {
+export default function Hero({ abVersion = "a" }: { abVersion?: string }) {
   const shouldReduceMotion = useReducedMotion();
 
   const handleCTASelection = () => {
@@ -58,7 +58,7 @@ export default function Hero({ abVersion = "A" }: { abVersion?: string }) {
             variants={textVariants}
             className="font-heading text-3xl md:text-5xl lg:text-[52px] leading-[1.15] text-text-primary mb-6 font-semibold"
           >
-            {abVersion === "B" ? (
+            {abVersion === "b" ? (
               <>
                 Passe na Fiscalização da
                 <br />
@@ -82,7 +82,7 @@ export default function Hero({ abVersion = "A" }: { abVersion?: string }) {
             variants={textVariants}
             className="font-sans text-[16px] md:text-[17px] leading-relaxed text-text-secondary mb-8 max-w-[520px]"
           >
-            {abVersion === "B" ? (
+            {abVersion === "b" ? (
               <>
                 Tenha sua Pasta Sanitária completa e personalizada pronta para apresentar ao fiscal. Economize semanas de trabalho tentando criar ou adaptar modelos genéricos da internet. Receba arquivos editáveis em <strong>Word</strong> e PDF na nuvem, ou escolha a pasta física impressa com <strong>frete grátis</strong>.
               </>
@@ -180,7 +180,6 @@ export default function Hero({ abVersion = "A" }: { abVersion?: string }) {
             {/* Vídeo do produto em auto-loop silencioso */}
             <video
               src="https://cnd.consultorasanitaria.com.br/grava%C3%A7%C3%A3o%20de%20tela%20pasta%20personalizada.mp4"
-              poster="/video-poster.jpg" // Imagem estática de preview
               autoPlay
               muted
               loop

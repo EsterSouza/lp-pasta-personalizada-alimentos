@@ -5,14 +5,14 @@ import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["600", "700"],
   variable: "--font-heading",
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
   variable: "--font-dmsans",
   display: "swap",
 });
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     type: 'website',
   },
+  other: {
+    "llms:description": "Landing page da Pasta Sanitária Personalizada para serviços de alimentação (restaurantes, padarias, deliveries, buffets). Documentação operacional sob medida — Manual de Boas Práticas, POPs e planilhas — elaborada por nutricionista consultora. Entrega digital (Word + PDF) ou física impressa com frete grátis. Marca: Ana Roberta / Consultora Sanitária.",
+  },
   robots: { index: true, follow: true },
   alternates: {
     canonical: 'https://pasta-personalizada-alimentos.consultorasanitaria.com.br',
@@ -41,17 +44,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${outfit.variable} ${dmSans.variable}`}>
-      {/* Google Ads Pixel (gtag.js) */}
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+      </head>
+      {/* Google Ads + GA4 (gtag.js) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=AW-18030262622"
         strategy="afterInteractive"
       />
-      <Script id="google-ads-pixel" strategy="afterInteractive">
+      <Script id="google-ads-ga4" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'AW-18030262622');
+          gtag('config', 'G-L1SR8V2ECY');
         `}
       </Script>
 

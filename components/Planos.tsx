@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { trackInitiateCheckout, getHotmartUrlWithUtms } from "./pixel";
+import { trackInitiateCheckout, getHotmartUrlWithUtms } from "@/lib/tracking";
 
-export default function Planos({ abVersion = "A" }: { abVersion?: string }) {
+export default function Planos() {
   const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
 
@@ -146,7 +146,7 @@ export default function Planos({ abVersion = "A" }: { abVersion?: string }) {
 
                   {/* Preços - Parcelado em destaque grande, à vista pequeno */}
                   <div className="text-center mb-6 py-4 border-b border-border">
-                    <div className="font-heading text-[32px] md:text-[36px] font-extrabold text-green-cta leading-none mb-2">
+                    <div className="font-heading text-[32px] md:text-[36px] font-bold text-green-cta leading-none mb-2">
                       {plano.installmentText}
                     </div>
                     <div className="font-sans text-sm md:text-base text-text-secondary font-medium mt-1">

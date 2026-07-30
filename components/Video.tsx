@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { trackInitiateCheckout, getHotmartUrlWithUtms } from "./pixel";
+import { trackInitiateCheckout, getHotmartUrlWithUtms } from "@/lib/tracking";
 
 export default function Video() {
   const shouldReduceMotion = useReducedMotion();
