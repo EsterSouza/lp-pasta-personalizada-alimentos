@@ -2,56 +2,97 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { experiment } from "./experiment.config";
 
-const MARKDOWN_CONTENT = `# Pasta Sanitaria Personalizada para Servicos de Alimentacao
+const MARKDOWN_CONTENT = `# Consultora Sanitaria — Pasta Sanitaria Personalizada para Alimentacao
 
-> Documentacao operacional sob medida para regularizar seu servico de alimentacao junto a Vigilancia Sanitaria.
+> Documentacao operacional sob medida (Manual de Boas Praticas, POPs e
+> planilhas) para regularizar seu servico de alimentacao junto a Vigilancia
+> Sanitaria. Por Ana Roberta, Consultora Nutricionista.
 
 ## Produto
 
-Pasta Sanitaria Personalizada — Manual de Boas Praticas, POPs (Procedimentos Operacionais Padronizados) e planilhas operacionais elaborados sob medida para o seu estabelecimento por nutricionista consultora.
+- Nome: Pasta Sanitaria Personalizada para Servicos de Alimentacao
+- Formato: Documentacao personalizada (digital e/ou fisica impressa)
+- Entrega: ate 15 dias uteis apos preenchimento do formulario de diagnostico
+- Entrega fisica: + 3 a 5 dias via transportadora, frete gratis
+- Garantia: 7 dias, reembolso incondicional
 
-## Planos e Precos
+### Planos
 
-| Plano | Preco | Inclui |
-|-------|-------|--------|
-| Pasta Digital | R$ 497 (12x R$ 51,40) | PDF + arquivos editaveis em Word, entrega via nuvem |
-| Fisica P&B + Digital | R$ 697 (12x R$ 72,09) | Digital + pasta impressa P&B, frete gratis |
-| Fisica Colorida + Digital | R$ 857 (12x R$ 88,63) | Digital + pasta impressa colorida premium, frete gratis |
+- Pasta Digital: R$ 497 (12x R$ 51,40)
+  - Checkout: https://pay.hotmart.com/A106157606C?checkoutMode=10
+  - Inclui: PDF + arquivos editaveis em Word, entrega via nuvem (Google Drive ou OneDrive)
 
-## Como Funciona
+- Fisica P&B + Digital: R$ 697 (12x R$ 72,09)
+  - Checkout: https://pay.hotmart.com/A106162381P
+  - Inclui: tudo do digital + impressao P&B profissional + pasta catalogo + frete gratis
 
-1. Escolha o plano e faca a compra pelo checkout seguro da Hotmart
-2. Preencha o formulario com os dados do seu estabelecimento
-3. A nutricionista consultora elabora toda a documentacao personalizada
-4. Receba sua pasta em ate 15 dias uteis (digital) + 3 a 5 dias para entrega fisica
+- Fisica Colorida + Digital: R$ 857 (12x R$ 88,63)
+  - Checkout: https://pay.hotmart.com/Q106162166E
+  - Inclui: tudo do digital + impressao colorida premium + pasta catalogo + frete gratis
 
-## Para Quem E
+## O que e
 
-- Restaurantes
-- Padarias
-- Deliveries e dark kitchens
-- Buffets
-- Mercearias
-- Hospitais e cozinhas industriais
+Pasta Sanitaria Personalizada — Manual de Boas Praticas, POPs (Procedimentos
+Operacionais Padronizados) e planilhas operacionais elaborados sob medida para
+o estabelecimento do cliente por nutricionista consultora. Os documentos seguem
+a RDC ANVISA 216/2004 e demais legislacoes aplicaveis, adaptados as exigencias
+estaduais e municipais da regiao do cliente.
 
-## Garantia
+## Como funciona
 
-Garantia incondicional de 7 dias. Reembolso integral sem burocracia.
+1. Compra do plano — checkout online seguro via Hotmart (cartao, PIX ou boleto)
+2. Preenchimento do formulario de diagnostico com dados do estabelecimento
+3. Elaboracao — a nutricionista consultora monta a documentacao personalizada
+4. Entrega digital em ate 15 dias uteis; fisica com frete gratis em 3-5 dias adicionais
+
+## Publico-alvo
+
+Restaurantes, padarias, deliveries, dark kitchens, buffets, mercearias,
+hospitais, cozinhas industriais e qualquer servico de alimentacao sujeito
+a fiscalizacao da Vigilancia Sanitaria. Valido para todo o Brasil.
 
 ## Autora
 
-**Ana Roberta** — Nutricionista consultora especializada em documentacao sanitaria para servicos de alimentacao.
+- Nome: Ana Roberta
+- Titulo: Nutricionista Consultora
+- Especialidade: Documentacao sanitaria para servicos de alimentacao
+- Marca: Consultora Sanitaria (linha de alimentos)
+
+## FAQ
+
+### A documentacao e aceita pela Vigilancia Sanitaria?
+Sim. Elaborada com base nas normas federais (RDC ANVISA 216/2004) e adaptada
+as exigencias estaduais e municipais do estabelecimento.
+
+### O servico vale para todo o Brasil?
+Sim. A equipe faz o levantamento das normas locais para garantir que a pasta
+atenda aos requisitos especificos da regiao.
+
+### Posso editar os documentos depois?
+Sim. Os arquivos sao entregues em Word (editaveis) alem da versao em PDF.
+
+### E se eu precisar de ajuste?
+1 revisao esta incluida durante o processo de elaboracao.
+
+### Qual o prazo de entrega?
+Ate 15 dias uteis apos o preenchimento do formulario de diagnostico.
+
+### Como recebo a documentacao?
+Via Google Drive ou OneDrive. Se contratou a pasta fisica, ela e enviada
+por transportadora com frete gratis.
+
+### Como funciona o pagamento?
+Checkout seguro da Hotmart. Aceita cartao de credito, PIX e boleto bancario.
 
 ## Contato
 
-- WhatsApp: +55 21 99031-3823
+- WhatsApp: https://wa.me/5521990313823
+- Email: contato@consultorasanitaria.com.br
 - Site: https://pasta-personalizada-alimentos.consultorasanitaria.com.br
-
-## Empresa
-
-Consultora Sanitaria · CNPJ 53.297.694/0001-37
-Ed. Lagoa, Av. Embaixador Abelardo Bueno, 1, Sala 153-D
-Barra Olimpica, Rio de Janeiro - RJ, 22775-022
+- Empresa: HUB TREINAVISA SERVICOS LTDA
+- CNPJ: 53.297.694/0001-37
+- Endereco: Av. Embaixador Abelardo Bueno, 1, Sala 153-D, Ed. Lagoa,
+  Rio de Janeiro, RJ, 22775-022, Brasil
 `;
 
 function pickVariant(): string {
