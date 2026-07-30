@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { trackInitiateCheckout, getHotmartUrlWithUtms } from "@/lib/tracking";
+import { OFFERS } from "@/lib/content/offers";
 
 export default function Planos() {
   const shouldReduceMotion = useReducedMotion();
@@ -30,12 +31,10 @@ export default function Planos() {
 
   const planos = [
     {
-      id: "digital",
-      name: "Pasta Digital",
+      ...OFFERS.digital,
       highlight: false,
-      priceCashFormatted: "ou R$ 497,00 à vista",
-      installmentText: "12x de R$ 51,40",
-      url: "https://pay.hotmart.com/A106157606C?checkoutMode=10",
+      priceCashFormatted: `ou ${OFFERS.digital.priceLabel} à vista`,
+      installmentText: OFFERS.digital.installment,
       features: [
         "Todos os documentos em PDF",
         "Arquivos 100% editáveis em Word",
@@ -46,12 +45,10 @@ export default function Planos() {
       ctaText: "Quero a Pasta Digital",
     },
     {
-      id: "pb",
-      name: "Física P&B + Digital",
+      ...OFFERS.fisicaPB,
       highlight: true,
-      priceCashFormatted: "ou R$ 697,00 à vista",
-      installmentText: "12x de R$ 72,09",
-      url: "https://pay.hotmart.com/A106162381P",
+      priceCashFormatted: `ou ${OFFERS.fisicaPB.priceLabel} à vista`,
+      installmentText: OFFERS.fisicaPB.installment,
       features: [
         "Todos os documentos em PDF",
         "Arquivos 100% editáveis em Word",
@@ -65,12 +62,10 @@ export default function Planos() {
       ctaText: "Quero a Pasta Física P&B",
     },
     {
-      id: "colorida",
-      name: "Física Colorida + Digital",
+      ...OFFERS.fisicaColorida,
       highlight: false,
-      priceCashFormatted: "ou R$ 857,00 à vista",
-      installmentText: "12x de R$ 88,63",
-      url: "https://pay.hotmart.com/Q106162166E",
+      priceCashFormatted: `ou ${OFFERS.fisicaColorida.priceLabel} à vista`,
+      installmentText: OFFERS.fisicaColorida.installment,
       features: [
         "Todos os documentos em PDF",
         "Arquivos 100% editáveis em Word",
@@ -181,7 +176,7 @@ export default function Planos() {
                     href={mounted ? getHotmartUrlWithUtms(plano.url) : plano.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => handlePlanClick(plano.id === "digital" ? 497 : plano.id === "pb" ? 697 : 857, plano.name)}
+                    onClick={() => handlePlanClick(plano.price, plano.name)}
                     animate={plano.highlight && !shouldReduceMotion ? {
                       scale: [1, 1.03, 1],
                       boxShadow: [

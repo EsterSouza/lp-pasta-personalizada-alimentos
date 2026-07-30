@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"
+import { experiment } from "@/experiment.config"
 
 export default function Home() {
-  redirect("/a");
+  redirect(`/${experiment.champion}`)
 }

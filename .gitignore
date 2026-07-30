@@ -1,27 +1,14 @@
-node_modules/
+node_modules
+.next
+out
+build
+.env*
 .DS_Store
-*.log
-.env
-dist/
-build/
-.vscode/
-.idea/
-.next/
-.vercel/
-*.png
-*.webp
-*.jpeg
-*.jpg
-!*.jpg
-!*.png
-!*.webp
-!*.jpeg
-# Keep images that are part of the site
-!restaurante.jpg
-!padaria.jpg
-!buffet.jpg
-!ifood.webp
-!foto da ana.jpeg
-!*.ico
-!*.svg
+*.tsbuildinfo
 .vercel
+.husky/_/
+
+# videos (muito grandes p/ git)
+*.mp4
+*.mov
+*.webm

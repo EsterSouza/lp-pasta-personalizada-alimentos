@@ -1,7 +1,13 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { experiment } from "./experiment.config";
+// Middleware A/B generico — NAO editar por variante. Dirigido por experiment.config.ts.
+// Ver ../CONVENTIONS.md §1.2. Rewrite (URL fica "/"); split N-way ponderado; respeita ?v=.
+// Markdown negotiation: Accept: text/markdown → retorna conteudo markdown para agentes IA.
 
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
+import { experiment, VARIANT_IDS, pickVariant } from "./experiment.config"
+
+// Conteudo markdown para agentes IA (mesmo de public/llms.txt).
+// Precos/checkout aqui sao duplicacao assumida — fonte de verdade em lib/content/offers.ts.
 const MARKDOWN_CONTENT = `# Consultora Sanitaria — Pasta Sanitaria Personalizada para Alimentacao
 
 > Documentacao operacional sob medida (Manual de Boas Praticas, POPs e
@@ -93,56 +99,47 @@ Checkout seguro da Hotmart. Aceita cartao de credito, PIX e boleto bancario.
 - CNPJ: 53.297.694/0001-37
 - Endereco: Av. Embaixador Abelardo Bueno, 1, Sala 153-D, Ed. Lagoa,
   Rio de Janeiro, RJ, 22775-022, Brasil
-`;
-
-function pickVariant(): string {
-  if (experiment.champion) return experiment.champion;
-
-  const total = experiment.variants.reduce((sum, v) => sum + v.weight, 0);
-  let rand = Math.random() * total;
-
-  for (const v of experiment.variants) {
-    rand -= v.weight;
-    if (rand <= 0) return v.id;
-  }
-
-  return experiment.variants[0].id;
-}
+`
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (pathname !== "/") return NextResponse.next();
-
-  const accept = request.headers.get("accept") || "";
+  const accept = request.headers.get("accept") ?? ""
   if (accept.includes("text/markdown")) {
     return new NextResponse(MARKDOWN_CONTENT, {
       headers: { "Content-Type": "text/markdown; charset=utf-8" },
-    });
+    })
   }
 
-  const validIds = experiment.variants.map((v) => v.id);
-  let variant = request.cookies.get(experiment.cookie)?.value;
+  const url = request.nextUrl
+  const forced = url.searchParams.get("v")
+  const envForced = process.env.FORCE_VARIANT
+  const cookieVal = request.cookies.get(experiment.cookie)?.value
 
-  if (!variant || !validIds.includes(variant)) {
-    variant = pickVariant();
+  let variant: string
+  let setCookie = false
+
+  if (forced && VARIANT_IDS.includes(forced)) {
+    variant = forced
+    setCookie = true // forca de QA tambem fixa o cookie
+  } else if (envForced && VARIANT_IDS.includes(envForced)) {
+    variant = envForced
+  } else if (cookieVal && VARIANT_IDS.includes(cookieVal)) {
+    variant = cookieVal
+  } else {
+    variant = pickVariant(Math.random())
+    setCookie = true
   }
 
-  const rewriteUrl = request.nextUrl.clone();
-  rewriteUrl.pathname = `/${variant}`;
+  const rewriteUrl = url.clone()
+  rewriteUrl.pathname = `/${variant}` // preserva url.search (UTMs)
 
-  const response = NextResponse.rewrite(rewriteUrl);
-
-  if (request.cookies.get(experiment.cookie)?.value !== variant) {
-    response.cookies.set(experiment.cookie, variant, {
-      maxAge: experiment.maxAge,
+  const res = NextResponse.rewrite(rewriteUrl)
+  if (setCookie) {
+    res.cookies.set(experiment.cookie, variant, {
+      maxAge: experiment.maxAgeDays * 24 * 60 * 60,
       path: "/",
-    });
+    })
   }
-
-  return response;
+  return res
 }
 
-export const config = {
-  matcher: ["/"],
-};
+export const config = { matcher: ["/"] }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { trackInitiateCheckout, getHotmartUrlWithUtms } from "@/lib/tracking";
+import { OFFERS } from "@/lib/content/offers";
 
 export default function Video() {
   const shouldReduceMotion = useReducedMotion();
@@ -13,7 +14,7 @@ export default function Video() {
   }, []);
 
   const handleCheckoutClick = () => {
-    trackInitiateCheckout(497, "Pasta Digital - Secao Video");
+    trackInitiateCheckout(OFFERS.digital.price, `${OFFERS.digital.name} - Secao Video`);
   };
 
   const scrollReveal = {
@@ -85,7 +86,7 @@ export default function Video() {
           variants={scrollReveal}
         >
           <motion.a
-            href={mounted ? getHotmartUrlWithUtms("https://pay.hotmart.com/A106157606C?checkoutMode=10") : "https://pay.hotmart.com/A106157606C?checkoutMode=10"}
+            href={mounted ? getHotmartUrlWithUtms(OFFERS.digital.url) : OFFERS.digital.url}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCheckoutClick}

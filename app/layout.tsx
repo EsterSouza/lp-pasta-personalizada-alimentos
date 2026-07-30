@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
 import Script from "next/script";
+import { GROUP } from "@/lib/content/tracking-ids";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -49,7 +50,7 @@ export default function RootLayout({
       </head>
       {/* Google Ads + GA4 (gtag.js) */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-18030262622"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GROUP.googleAdsId}`}
         strategy="afterInteractive"
       />
       <Script id="google-ads-ga4" strategy="afterInteractive">
@@ -57,8 +58,8 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'AW-18030262622');
-          gtag('config', 'G-L1SR8V2ECY');
+          gtag('config', '${GROUP.googleAdsId}');
+          gtag('config', '${GROUP.ga4Id}');
         `}
       </Script>
 
@@ -73,7 +74,7 @@ export default function RootLayout({
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1429926872242671');
+          fbq('init', '${GROUP.metaPixelId}');
           fbq('track', 'PageView');
           fbq('track', 'ViewContent');
         `}
@@ -85,7 +86,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1429926872242671&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${GROUP.metaPixelId}&ev=PageView&noscript=1`}
             alt="Meta Pixel"
           />
         </noscript>
